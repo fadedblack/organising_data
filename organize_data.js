@@ -299,3 +299,15 @@ const extractPeopleWithNoCar = function (people) {
 const petsOfPeopleWithNoCar = function (people) {
   return countVaccinatedPets(extractPeopleWithNoCar(people));
 };
+
+// 14. What is the most common type of pet among the group?
+
+// 15. How many individuals have more than two hobbies?
+
+const individualsWithMoreThan2Hobbies = function (people) {
+  return people.filter(person => person.hobbies.length > 1);
+};
+
+const countIndividualsWithMoreThan2Hobbies = function (people) {
+  return individualsWithMoreThan2Hobbies(people).length;
+};
