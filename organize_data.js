@@ -289,3 +289,9 @@ const extractPetNamesFrom = function (people, cities) {
 
   return getPetNames(bangalorePets).concat(getPetNames(chennaiPets));
 };
+
+// 13. How many vaccinated pets belong to people who do not own a car?
+
+const extractPeopleWithNoCar = function (people) {
+  return people.filter(person => person.vehicle_type !== "car");
+};
