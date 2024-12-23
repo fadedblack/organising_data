@@ -295,3 +295,7 @@ const extractPetNamesFrom = function (people, cities) {
 const extractPeopleWithNoCar = function (people) {
   return people.filter(person => person.vehicle_type !== "car");
 };
+
+const petsOfPeopleWithNoCar = function (people) {
+  return countVaccinatedPets(extractPeopleWithNoCar(people));
+};
