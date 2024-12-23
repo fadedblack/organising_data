@@ -314,6 +314,30 @@ const countIndividualsWithMoreThan2Hobbies = function (people) {
 
 // 16. How many individuals share at least one hobby with Ramesh?
 
+const getHobbiesOf = function (people, personToGet) {
+  const allDetail = people.filter(person => person.name === personToGet);
+  const hobbies = allDetail.flatMap(function (person) {
+    return person.hobbies.map(hobby => hobby.type);
+  });
+
+  return hobbies;
+};
+
+const anyElementsMatching = function (array1, array2) {
+  return array1.some(function (element) {
+    return array2.includes(element);
+  });
+};
+
+const individualsCommonHobby = function (people) {
+  const ramesh = getHobbiesOf(people, "Ramesh");
+  const common = people.filter(function (person) {
+    return anyElementsMatching(getHobbiesOf(people, person.name), ramesh);
+  });
+
+  return common.length;
+};
+
 // 17. Which pet is the youngest, and what is its name?
 
 const minAge = function (youngestPet, pet) {
