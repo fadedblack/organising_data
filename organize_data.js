@@ -275,3 +275,17 @@ const individualsWithMoreThan1Pet = function (people) {
 const extractPeopleFrom = function (people, city) {
   return people.filter(person => person.hometown === city);
 };
+
+const getPetNames = function (pets) {
+  return pets.map(pets => pets.name);
+};
+
+const extractPetNamesFrom = function (people, cities) {
+  const bangalorePeople = extractPeopleFrom(people, cities[0]);
+  const chennaiPeople = extractPeopleFrom(people, cities[1]);
+
+  const bangalorePets = getAllPets(bangalorePeople);
+  const chennaiPets = getAllPets(chennaiPeople);
+
+  return getPetNames(bangalorePets).concat(getPetNames(chennaiPets));
+};
