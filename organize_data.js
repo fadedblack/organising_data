@@ -330,3 +330,31 @@ const getYoungestPet = function (people) {
 
   return pets.reduce(minAge, { name: '', age: Infinity });
 };
+
+// 18. What types of books are mentioned as interests, and who reads them?
+
+const getTypeOfBook = function (people, hobbyType) {
+  const types = people.flatMap(function (person) {
+    return person.hobbies.filter(hobby => hobby.type === hobbyType);
+  });
+
+  return types.map(type => type.genre);
+};
+
+const extractPeopleByHobby = function (people, hobbyType) {
+  return people.filter(function (person) {
+    return person.hobbies.filter(hobby => hobby.type === hobbyType).length;
+  });
+};
+
+const extractTypeOfBook = function (people) {
+  const reading = extractPeopleByHobby(people, "reading");
+  const typeOfBook = getTypeOfBook(reading, "reading");
+
+  const names = reading.map(person => person.name);
+
+  return {
+    name: names,
+    genre: typeOfBook
+  };
+};
