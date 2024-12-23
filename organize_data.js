@@ -269,3 +269,9 @@ const individualsWithMoreThan1Pet = function (people) {
 
 // 11. Which pets are associated with specific favorite activities?
 
+// 12. What are the names of all animals that belong to people who live in 
+// Bangalore or Chennai?
+
+const extractPeopleFrom = function (people, city) {
+  return people.filter(person => person.hometown === city);
+};
