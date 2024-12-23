@@ -269,6 +269,12 @@ const individualsWithMoreThan1Pet = function (people) {
 
 // 11. Which pets are associated with specific favorite activities?
 
+const favoriteActivity = function (people) {
+  const pets = getAllPets(people);
+
+  return pets.map(pet => pet.favourite_activities.map(activity => activity));
+};
+
 // 12. What are the names of all animals that belong to people who live in 
 // Bangalore or Chennai?
 
