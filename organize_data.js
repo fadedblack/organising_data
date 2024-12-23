@@ -368,3 +368,11 @@ const liveInCitiesWithChar = function (people, char) {
 const countLiveInCitiesWithChar = function (people, char) {
   return liveInCitiesWithChar(people, char).length;
 };
+
+// 20. Which individuals do not own any pets?
+
+const doNotOwnPets = function (people) {
+  const persons = people.filter(person => person.pets === undefined);
+
+  return persons.map(person => person.name);
+};
