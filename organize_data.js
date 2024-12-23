@@ -311,3 +311,22 @@ const individualsWithMoreThan2Hobbies = function (people) {
 const countIndividualsWithMoreThan2Hobbies = function (people) {
   return individualsWithMoreThan2Hobbies(people).length;
 };
+
+// 16. How many individuals share at least one hobby with Ramesh?
+
+// 17. Which pet is the youngest, and what is its name?
+
+const minAge = function (youngestPet, pet) {
+  if (pet.age < youngestPet.age && pet.age !== 0) {
+    youngestPet.name = pet.name;
+    youngestPet.age = pet.age;
+  }
+
+  return youngestPet;
+};
+
+const getYoungestPet = function (people) {
+  const pets = getAllPets(people);
+
+  return pets.reduce(minAge, { name: '', age: Infinity });
+};
