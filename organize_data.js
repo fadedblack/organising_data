@@ -302,6 +302,38 @@ const petsOfPeopleWithNoCar = function (people) {
 
 // 14. What is the most common type of pet among the group?
 
+const frequency = function (pets) {
+  return pets.reduce(function (object, pet) {
+    if (object[pet.species] === undefined) {
+      object[pet.species] = 1;
+      return object;
+    }
+
+    object[pet.species] += 1;
+    return object;
+  }, {});
+};
+
+const maxOccured = function (frequency, names) {
+  return names.reduce(function (max, name) {
+    if (frequency[name] > max.occuring) {
+      max.name = name;
+      max.occuring = frequency[name];
+    }
+
+    return max;
+  }, { name: '', occuring: 0 });
+};
+
+const commonTypeOfPet = function (people) {
+  const pets = getAllPets(people);
+  const petFrequency = frequency(pets);
+  const petNames = pets.map(pet => pet.species);
+
+  const maxOccuring = maxOccured(petFrequency, petNames);
+  return maxOccuring.name;
+};
+
 // 15. How many individuals have more than two hobbies?
 
 const individualsWithMoreThan2Hobbies = function (people) {
