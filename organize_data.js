@@ -8,28 +8,27 @@ const personKavya = {
   hobbies: [
     {
       type: "reading",
-      genre: "fantasy"
+      genre: "fantasy",
     },
     {
       type: "movies",
-      genre: "sci-fi"
-    }
+      genre: "sci-fi",
+    },
   ],
-  pet: [{
-    name: "Snowy",
-    species: "rabbit",
-    type: "",
-    age: 2,
-    vaccinated_fully: true,
-    favourite_activities: [
-      "hoping around backyard",
-      "nibbiling on carrot"
-    ]
-  }],
+  pet: [
+    {
+      name: "Snowy",
+      species: "rabbit",
+      type: "",
+      age: 2,
+      vaccinated_fully: true,
+      favourite_activities: ["hoping around backyard", "nibbiling on carrot"],
+    },
+  ],
   employed: false,
   vehicle_owned: false,
   vehicle_type: false,
-  transport: ""
+  transport: "",
 };
 
 const personRamesh = {
@@ -42,12 +41,12 @@ const personRamesh = {
   hobbies: [
     {
       type: "gardening",
-      genre: "rose garden"
+      genre: "rose garden",
     },
     {
       type: "reading",
-      genre: "history"
-    }
+      genre: "history",
+    },
   ],
   pet: [
     {
@@ -56,9 +55,7 @@ const personRamesh = {
       type: "Persian",
       age: 3,
       vaccinated_fully: true,
-      favourite_activities: [
-        "lounging in the sun"
-      ]
+      favourite_activities: ["lounging in the sun"],
     },
     {
       name: "Leo",
@@ -66,14 +63,13 @@ const personRamesh = {
       type: "Persian",
       age: 3,
       vaccinated_fully: true,
-      favourite_activities: [
-        "lounging in the sun"
-      ]
-    }],
+      favourite_activities: ["lounging in the sun"],
+    },
+  ],
   employed: true,
   vehicle_owned: false,
   vehicle_type: false,
-  transport: ""
+  transport: "",
 };
 
 const personAnanaya = {
@@ -86,8 +82,8 @@ const personAnanaya = {
   hobbies: [
     {
       type: "cooking",
-      genre: "Italian"
-    }
+      genre: "Italian",
+    },
   ],
   pet: [
     {
@@ -96,16 +92,13 @@ const personAnanaya = {
       type: "",
       age: 0,
       vaccinated_fully: true,
-      favourite_activities: [
-        "knows over 20 languages",
-        "mimicking"
-      ]
-    }
+      favourite_activities: ["knows over 20 languages", "mimicking"],
+    },
   ],
   employed: false,
   vehicle_owned: false,
   vehicle_type: false,
-  transport: "public"
+  transport: "public",
 };
 
 const personRahul = {
@@ -118,16 +111,16 @@ const personRahul = {
   hobbies: [
     {
       type: "chess",
-      genre: ""
+      genre: "",
     },
     {
       type: "gardening",
-      genere: ""
+      genere: "",
     },
     {
       type: "weekend trips",
-      genre: ""
-    }
+      genre: "",
+    },
   ],
   pet: [
     {
@@ -136,15 +129,13 @@ const personRahul = {
       type: "Golden Retriever",
       age: 4,
       vaccinated_fully: true,
-      favourite_activities: [
-        "playing fetch in park"
-      ]
-    }
+      favourite_activities: ["playing fetch in park"],
+    },
   ],
   employed: true,
   vehicle_owned: true,
   vehicle_type: "car",
-  transport: "private"
+  transport: "private",
 };
 
 const people = [personRahul, personAnanaya, personRamesh, personKavya];
@@ -152,7 +143,7 @@ const people = [personRahul, personAnanaya, personRamesh, personKavya];
 // 1. How many individuals are currently employed?
 
 const getEmployed = function (people) {
-  return people.filter(person => person.employed);
+  return people.filter((person) => person.employed);
 };
 
 const countEmployed = function (people) {
@@ -162,7 +153,7 @@ const countEmployed = function (people) {
 // 2. How many people own a car?
 
 const getVehicleOwner = function (people, vehicleType) {
-  return people.filter(person => person.vehicle_type === vehicleType);
+  return people.filter((person) => person.vehicle_type === vehicleType);
 };
 
 const countVehicleOwner = function (people, vehicleType) {
@@ -171,13 +162,13 @@ const countVehicleOwner = function (people, vehicleType) {
 
 // 3. How many pets are fully vaccinated?
 
-const getAllPets = (people => people.flatMap(person => person.pet));
+const getAllPets = (people) => people.flatMap((person) => person.pet);
 
 const vaccinatedPets = function (people) {
-  return getAllPets(people).filter(pet => pet.vaccinated_fully);
+  return getAllPets(people).filter((pet) => pet.vaccinated_fully);
 };
 
-const countVaccinatedPets = people => vaccinatedPets(people).length;
+const countVaccinatedPets = (people) => vaccinatedPets(people).length;
 
 // 4. What are the names of all the pets, and what type of animal is each?
 
@@ -186,13 +177,13 @@ const getNameAndSpecies = function (pet) {
 };
 
 const listPetDetails = function (people) {
-  return getAllPets(people).map(pet => getNameAndSpecies(pet));
+  return getAllPets(people).map((pet) => getNameAndSpecies(pet));
 };
 
 // 5. Which cities do the individuals live in?
 
 const listCities = function (people) {
-  return people.map(person => person.hometown);
+  return people.map((person) => person.hometown);
 };
 
 // 6. How many hobbies are shared across the group? What are they?
@@ -208,11 +199,11 @@ const getUniqueHobbies = function (list) {
 };
 
 const getHobbies = function (people) {
-  return people.map(person => person.hobbies).flat();
+  return people.map((person) => person.hobbies).flat();
 };
 
 const extractHobbyType = function (hobbies) {
-  return hobbies.map(hobby => hobby.type);
+  return hobbies.map((hobby) => hobby.type);
 };
 
 const listHobbies = function (people) {
@@ -221,14 +212,14 @@ const listHobbies = function (people) {
 
   return {
     no_of_hobbies: uniqueHobbies.length,
-    hobbies: uniqueHobbies
+    hobbies: uniqueHobbies,
   };
 };
 
 // 7. How many pets belong to people who are currently unemployed?
 
 const listUnemployedIndividuals = function (people) {
-  return people.filter(person => !person.employed);
+  return people.filter((person) => !person.employed);
 };
 
 const countUnemployedPetOwners = function (people) {
@@ -240,49 +231,49 @@ const countUnemployedPetOwners = function (people) {
 const add = (number1, number2) => number1 + number2;
 
 const sumOfAges = function (people) {
-  return people.map(person => person.age).reduce(add, 0);
+  return people.map((person) => person.age).reduce(add, 0);
 };
 
 const getAverageAge = function (people) {
   return sumOfAges(people) / people.length;
 };
 
-// 9. How many individuals have studied computer science, and how many of them 
+// 9. How many individuals have studied computer science, and how many of them
 // have pets?
 
 const getIndividualsWithDegree = function (people, degree) {
-  return people.filter(person => person["degree"].includes(degree));
+  return people.filter((person) => person["degree"].includes(degree));
 };
 
 const countDegressAndPets = function (people, degree) {
   return {
     individuals_with_degree: getIndividualsWithDegree(people, degree).length,
-    pets: getAllPets(getIndividualsWithDegree(people, degree)).length
+    pets: getAllPets(getIndividualsWithDegree(people, degree)).length,
   };
 };
 
 // 10. How many individuals own more than one pet?
 
 const individualsWithMoreThan1Pet = function (people) {
-  return getAllPets(people).filter(person => person.length > 1).length;
+  return getAllPets(people).filter((person) => person.length > 1).length;
 };
 
 // 11. Which pets are associated with specific favorite activities?
 
-const favoriteActivity = function (people) {
+const getPetsFavouriteActivities = function (people) {
   const pets = getAllPets(people);
-  return pets.flatMap(pet => pet.favourite_activities);
+  return pets.flatMap((pet) => pet.favourite_activities);
 };
 
-// 12. What are the names of all animals that belong to people who live in 
+// 12. What are the names of all animals that belong to people who live in
 // Bangalore or Chennai?
 
 const extractPeopleFrom = function (people, city) {
-  return people.filter(person => person.hometown === city);
+  return people.filter((person) => person.hometown === city);
 };
 
 const getPetNames = function (pets) {
-  return pets.map(pets => pets.name);
+  return pets.map((pets) => pets.name);
 };
 
 const extractPetNamesFrom = function (people, cities) {
@@ -298,7 +289,7 @@ const extractPetNamesFrom = function (people, cities) {
 // 13. How many vaccinated pets belong to people who do not own a car?
 
 const extractPeopleWithNoCar = function (people) {
-  return people.filter(person => person.vehicle_type !== "car");
+  return people.filter((person) => person.vehicle_type !== "car");
 };
 
 const petsOfPeopleWithNoCar = function (people) {
@@ -320,20 +311,23 @@ const frequency = function (pets) {
 };
 
 const maxOccured = function (frequency, names) {
-  return names.reduce(function (max, name) {
-    if (frequency[name] > max.occuring) {
-      max.name = name;
-      max.occuring = frequency[name];
-    }
+  return names.reduce(
+    function (max, name) {
+      if (frequency[name] > max.occuring) {
+        max.name = name;
+        max.occuring = frequency[name];
+      }
 
-    return max;
-  }, { name: '', occuring: 0 });
+      return max;
+    },
+    { name: "", occuring: 0 }
+  );
 };
 
 const commonTypeOfPet = function (people) {
   const pets = getAllPets(people);
   const petFrequency = frequency(pets);
-  const petNames = pets.map(pet => pet.species);
+  const petNames = pets.map((pet) => pet.species);
 
   const maxOccuring = maxOccured(petFrequency, petNames);
   return maxOccuring.name;
@@ -342,7 +336,7 @@ const commonTypeOfPet = function (people) {
 // 15. How many individuals have more than two hobbies?
 
 const individualsWithMoreThan2Hobbies = function (people) {
-  return people.filter(person => person.hobbies.length > 1);
+  return people.filter((person) => person.hobbies.length > 1);
 };
 
 const countIndividualsWithMoreThan2Hobbies = function (people) {
@@ -352,9 +346,9 @@ const countIndividualsWithMoreThan2Hobbies = function (people) {
 // 16. How many individuals share at least one hobby with Ramesh?
 
 const getHobbiesOf = function (people, personToGet) {
-  const allDetail = people.filter(person => person.name === personToGet);
+  const allDetail = people.filter((person) => person.name === personToGet);
   const hobbies = allDetail.flatMap(function (person) {
-    return person.hobbies.map(hobby => hobby.type);
+    return person.hobbies.map((hobby) => hobby.type);
   });
 
   return hobbies;
@@ -389,22 +383,22 @@ const minAge = function (youngestPet, pet) {
 const getYoungestPet = function (people) {
   const pets = getAllPets(people);
 
-  return pets.reduce(minAge, { name: '', age: Infinity });
+  return pets.reduce(minAge, { name: "", age: Infinity });
 };
 
 // 18. What types of books are mentioned as interests, and who reads them?
 
 const getTypeOfBook = function (people, hobbyType) {
   const types = people.flatMap(function (person) {
-    return person.hobbies.filter(hobby => hobby.type === hobbyType);
+    return person.hobbies.filter((hobby) => hobby.type === hobbyType);
   });
 
-  return types.map(type => type.genre);
+  return types.map((type) => type.genre);
 };
 
 const extractPeopleByHobby = function (people, hobbyType) {
   return people.filter(function (person) {
-    return person.hobbies.filter(hobby => hobby.type === hobbyType).length;
+    return person.hobbies.filter((hobby) => hobby.type === hobbyType).length;
   });
 };
 
@@ -412,18 +406,18 @@ const extractTypeOfBook = function (people) {
   const reading = extractPeopleByHobby(people, "reading");
   const typeOfBook = getTypeOfBook(reading, "reading");
 
-  const names = reading.map(person => person.name);
+  const names = reading.map((person) => person.name);
 
   return {
     name: names,
-    genre: typeOfBook
+    genre: typeOfBook,
   };
 };
 
 // 19. How many individuals live in cities starting with the letter "B"?
 
 const liveInCitiesWithChar = function (people, char) {
-  return people.filter(person => [...person.hometown][0] === char);
+  return people.filter((person) => [...person.hometown][0] === char);
 };
 
 const countLiveInCitiesWithChar = function (people, char) {
@@ -433,7 +427,7 @@ const countLiveInCitiesWithChar = function (people, char) {
 // 20. Which individuals do not own any pets?
 
 const doNotOwnPets = function (people) {
-  const persons = people.filter(person => person.pets === undefined);
+  const persons = people.filter((person) => person.pets === undefined);
 
-  return persons.map(person => person.name);
+  return persons.map((person) => person.name);
 };
