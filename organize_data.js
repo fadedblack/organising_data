@@ -377,19 +377,13 @@ const countHobbyMatesOf = function (people, candidateName) {
 };
 
 // 17. Which pet is the youngest, and what is its name?
-const minAge = function (youngestPet, pet) {
-  if (pet.age < youngestPet.age && pet.age !== 0) {
-    youngestPet.name = pet.name;
-    youngestPet.age = pet.age;
-  }
-
-  return youngestPet;
-};
 
 const getYoungestPet = function (people) {
-  const pets = getPetDetails(people);
+  const pets = getPetDetails(people).filter(({ age }) => age !== 0);
+  const petAges = pets.map(({ age }) => age); //can be handled in 1 iteration
+  const minAge = Math.min(...petAges);
 
-  return pets.reduce(minAge, { name: "", age: Infinity });
+  return pets.find(({ age }) => minAge === age).name;
 };
 
 // 18. What types of books are mentioned as interests, and who reads them?
