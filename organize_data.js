@@ -344,9 +344,9 @@ const countIndividualsWithMultipleHobby = function (people) {
 // 16. How many individuals share at least one hobby with Ramesh?
 
 const getHobbiesOf = function (people, personToGet) {
-  const allDetail = people.filter((person) => person.name === personToGet);
+  const allDetail = people.filter(({ name }) => name === personToGet);
   const hobbies = allDetail.flatMap(function (person) {
-    return person.hobbies.map((hobby) => hobby.type);
+    return person.hobbies.map(({ type }) => type);
   });
 
   return hobbies;
