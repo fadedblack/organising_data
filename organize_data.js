@@ -344,12 +344,9 @@ const countIndividualsWithMultipleHobby = function (people) {
 // 16. How many individuals share at least one hobby with Ramesh?
 
 const getHobbiesOf = function (people, personToGet) {
-  const allDetail = people.filter(({ name }) => name === personToGet);
-  const hobbies = allDetail.flatMap(function (person) {
-    return person.hobbies.map(({ type }) => type);
-  });
+  const hobbyDetails = people.find(({ name }) => name === personToGet).hobbies;
 
-  return hobbies;
+  return hobbyDetails.map(({ type }) => type);
 };
 
 const anyElementsMatching = function (array1, array2) {
@@ -358,17 +355,28 @@ const anyElementsMatching = function (array1, array2) {
   });
 };
 
-const individualsCommonHobby = function (people) {
-  const ramesh = getHobbiesOf(people, "Ramesh");
-  const common = people.filter(function (person) {
-    return anyElementsMatching(getHobbiesOf(people, person.name), ramesh);
-  });
+const namesAndHobbiesOf = function (people) {
+  const names = people.map(({ name }) => name);
 
-  return common.length;
+  return names.map(function (name) {
+    return { name: name, hobbies: getHobbiesOf(people, name) };
+  });
+};
+
+const countHobbyMatesOf = function (people, candidateName) {
+  const namesAndHobbies = namesAndHobbiesOf(people);
+  const candidateHobby = namesAndHobbies.find(
+    ({ name }) => name === candidateName
+  );
+
+  return (
+    namesAndHobbies.filter(function ({ hobbies }) {
+      return anyElementsMatching(candidateHobby.hobbies, hobbies);
+    }).length - 1
+  );
 };
 
 // 17. Which pet is the youngest, and what is its name?
-
 const minAge = function (youngestPet, pet) {
   if (pet.age < youngestPet.age && pet.age !== 0) {
     youngestPet.name = pet.name;
