@@ -269,11 +269,11 @@ const getPetsFavouriteActivities = function (people) {
 // Bangalore or Chennai?
 
 const extractPeopleFrom = function (people, city) {
-  return people.filter((person) => person.hometown === city);
+  return people.filter(({ hometown }) => hometown === city);
 };
 
 const getPetNames = function (pets) {
-  return pets.map((pets) => pets.name);
+  return pets.map(({ name }) => name);
 };
 
 const extractPetNamesFrom = function (people, cities) {
