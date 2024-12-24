@@ -21,8 +21,8 @@ const personKavya = {
       species: "rabbit",
       type: "",
       age: 2,
-      vaccinated_fully: true,
-      favourite_activities: ["hoping around backyard", "nibbiling on carrot"],
+      vaccinatedFully: true,
+      favouriteActivities: ["hoping around backyard", "nibbiling on carrot"],
     },
   ],
   employed: false,
@@ -162,10 +162,10 @@ const countVehicleOwner = function (people, vehicleType) {
 
 // 3. How many pets are fully vaccinated?
 
-const getAllPets = (people) => people.flatMap((person) => person.pet);
+const getPetDetails = (people) => people.flatMap((person) => person.pet);
 
 const vaccinatedPets = function (people) {
-  return getAllPets(people).filter((pet) => pet.vaccinated_fully);
+  return getPetDetails(people).filter((pet) => pet.vaccinated_fully);
 };
 
 const countVaccinatedPets = (people) => vaccinatedPets(people).length;
@@ -177,7 +177,7 @@ const getNameAndSpecies = function (pet) {
 };
 
 const listPetDetails = function (people) {
-  return getAllPets(people).map((pet) => getNameAndSpecies(pet));
+  return getPetDetails(people).map((pet) => getNameAndSpecies(pet));
 };
 
 // 5. Which cities do the individuals live in?
@@ -223,7 +223,7 @@ const listUnemployedIndividuals = function (people) {
 };
 
 const countUnemployedPetOwners = function (people) {
-  return getAllPets(listUnemployedIndividuals(people)).length;
+  return getPetDetails(listUnemployedIndividuals(people)).length;
 };
 
 // 8. What is the average age of the individuals mentioned in the passage?
@@ -248,20 +248,20 @@ const getIndividualsWithDegree = function (people, degree) {
 const countDegressAndPets = function (people, degree) {
   return {
     individuals_with_degree: getIndividualsWithDegree(people, degree).length,
-    pets: getAllPets(getIndividualsWithDegree(people, degree)).length,
+    pets: getPetDetails(getIndividualsWithDegree(people, degree)).length,
   };
 };
 
 // 10. How many individuals own more than one pet?
 
 const individualsWithMoreThan1Pet = function (people) {
-  return getAllPets(people).filter((person) => person.length > 1).length;
+  return getPetDetails(people).filter((person) => person.length > 1).length;
 };
 
 // 11. Which pets are associated with specific favorite activities?
 
 const getPetsFavouriteActivities = function (people) {
-  const pets = getAllPets(people);
+  const pets = getPetDetails(people);
   return pets.flatMap((pet) => pet.favourite_activities);
 };
 
@@ -280,8 +280,8 @@ const extractPetNamesFrom = function (people, cities) {
   const bangalorePeople = extractPeopleFrom(people, cities[0]);
   const chennaiPeople = extractPeopleFrom(people, cities[1]);
 
-  const bangalorePets = getAllPets(bangalorePeople);
-  const chennaiPets = getAllPets(chennaiPeople);
+  const bangalorePets = getPetDetails(bangalorePeople);
+  const chennaiPets = getPetDetails(chennaiPeople);
 
   return getPetNames(bangalorePets).concat(getPetNames(chennaiPets));
 };
@@ -325,7 +325,7 @@ const maxOccured = function (frequency, names) {
 };
 
 const commonTypeOfPet = function (people) {
-  const pets = getAllPets(people);
+  const pets = getPetDetails(people);
   const petFrequency = frequency(pets);
   const petNames = pets.map((pet) => pet.species);
 
@@ -381,7 +381,7 @@ const minAge = function (youngestPet, pet) {
 };
 
 const getYoungestPet = function (people) {
-  const pets = getAllPets(people);
+  const pets = getPetDetails(people);
 
   return pets.reduce(minAge, { name: "", age: Infinity });
 };
