@@ -277,13 +277,10 @@ const getPetNames = function (pets) {
 };
 
 const extractPetNamesFrom = function (people, cities) {
-  const bangalorePeople = extractPeopleFrom(people, cities[0]);
-  const chennaiPeople = extractPeopleFrom(people, cities[1]);
-
-  const bangalorePets = getPetDetails(bangalorePeople);
-  const chennaiPets = getPetDetails(chennaiPeople);
-
-  return getPetNames(bangalorePets).concat(getPetNames(chennaiPets));
+  return cities.flatMap(function (city) {
+    const petDetails = getPetDetails(extractPeopleFrom(people, city));
+    return getPetNames(petDetails);
+  });
 };
 
 // 13. How many vaccinated pets belong to people who do not own a car?
