@@ -26,8 +26,8 @@ const personKavya = {
     },
   ],
   employed: false,
-  vehicle_owned: false,
-  vehicle_type: false,
+  vehicleOwned: false,
+  vehicleType: false,
   transport: "",
 };
 
@@ -54,21 +54,21 @@ const personRamesh = {
       species: "cat",
       type: "Persian",
       age: 3,
-      vaccinated_fully: true,
-      favourite_activities: ["lounging in the sun"],
+      vaccinatedFully: true,
+      favouriteActivities: ["lounging in the sun"],
     },
     {
       name: "Leo",
       species: "cat",
       type: "Persian",
       age: 3,
-      vaccinated_fully: true,
-      favourite_activities: ["lounging in the sun"],
+      vaccinatedFully: true,
+      favouriteActivities: ["lounging in the sun"],
     },
   ],
   employed: true,
-  vehicle_owned: false,
-  vehicle_type: false,
+  vehicleOwned: false,
+  vehicleType: false,
   transport: "",
 };
 
@@ -91,13 +91,13 @@ const personAnanaya = {
       species: "parrot",
       type: "",
       age: 0,
-      vaccinated_fully: true,
-      favourite_activities: ["knows over 20 languages", "mimicking"],
+      vaccinatedFully: true,
+      favouriteActivities: ["knows over 20 languages", "mimicking"],
     },
   ],
   employed: false,
-  vehicle_owned: false,
-  vehicle_type: false,
+  vehicleOwned: false,
+  vehicleType: false,
   transport: "public",
 };
 
@@ -128,13 +128,13 @@ const personRahul = {
       species: "dog",
       type: "Golden Retriever",
       age: 4,
-      vaccinated_fully: true,
-      favourite_activities: ["playing fetch in park"],
+      vaccinatedFully: true,
+      favouriteActivities: ["playing fetch in park"],
     },
   ],
   employed: true,
-  vehicle_owned: true,
-  vehicle_type: "car",
+  vehicleOwned: true,
+  vehicleType: "car",
   transport: "private",
 };
 
@@ -153,7 +153,7 @@ const countEmployed = function (people) {
 // 2. How many people own a car?
 
 const getVehicleOwner = function (people, vehicleType) {
-  return people.filter((person) => person.vehicle_type === vehicleType);
+  return people.filter((person) => person.vehicleType === vehicleType);
 };
 
 const countVehicleOwner = function (people, vehicleType) {
@@ -165,7 +165,7 @@ const countVehicleOwner = function (people, vehicleType) {
 const getPetDetails = (people) => people.flatMap((person) => person.pet);
 
 const vaccinatedPets = function (people) {
-  return getPetDetails(people).filter((pet) => pet.vaccinated_fully);
+  return getPetDetails(people).filter((pet) => pet.vaccinatedFully);
 };
 
 const countVaccinatedPets = (people) => vaccinatedPets(people).length;
@@ -262,7 +262,7 @@ const individualsWithMoreThan1Pet = function (people) {
 
 const getPetsFavouriteActivities = function (people) {
   const pets = getPetDetails(people);
-  return pets.flatMap((pet) => pet.favourite_activities);
+  return pets.flatMap((pet) => pet.favouriteActivities);
 };
 
 // 12. What are the names of all animals that belong to people who live in
@@ -286,10 +286,10 @@ const extractPetNamesFrom = function (people, cities) {
 // 13. How many vaccinated pets belong to people who do not own a car?
 
 const extractPeopleWithNoCar = function (people) {
-  return people.filter((person) => person.vehicle_type !== "car");
+  return people.filter(({ vehicleType }) => vehicleType !== "car");
 };
 
-const petsOfPeopleWithNoCar = function (people) {
+const countVaccinatedPetsOfPeopleWithNoCar = function (people) {
   return countVaccinatedPets(extractPeopleWithNoCar(people));
 };
 
