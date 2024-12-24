@@ -271,8 +271,7 @@ const individualsWithMoreThan1Pet = function (people) {
 
 const favoriteActivity = function (people) {
   const pets = getAllPets(people);
-
-  return pets.map(pet => pet.favourite_activities.map(activity => activity));
+  return pets.flatMap(pet => pet.favourite_activities);
 };
 
 // 12. What are the names of all animals that belong to people who live in 
