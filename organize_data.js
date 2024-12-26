@@ -430,7 +430,7 @@ const extractTypeOfBook = function (people) {
 // 19. How many individuals live in cities starting with the letter "B"?
 
 const liveInCitiesWithChar = function (people, char) {
-  return people.filter((person) => [...person.hometown][0] === char);
+  return people.filter(({ hometown }) => hometown[0] === char);
 };
 
 const countLiveInCitiesWithChar = function (people, char) {
