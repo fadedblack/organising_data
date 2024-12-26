@@ -396,6 +396,19 @@ const getTypeOfBook = function (people, hobbyType) {
   return types.map((type) => type.genre);
 };
 
+// const extractPeopleByHobby = function (people, hobbyType) {
+//   return people.filter(function (person) {
+//     return person.hobbies.some((hobby) => hobby.type === hobbyType);
+//   });
+// };
+
+// const getGenreByType = function (people, hobbyType) {
+//   return people.flatMap(function ({ name, hobbies }) {
+//     const something = hobbies.filter(({ type }) => type === hobbyType);
+
+//     console.log(something.map(({ genre }) => genre));
+//   });
+// };
 const extractPeopleByHobby = function (people, hobbyType) {
   return people.filter(function (person) {
     return person.hobbies.filter((hobby) => hobby.type === hobbyType).length;
