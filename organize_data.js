@@ -429,12 +429,12 @@ const extractTypeOfBook = function (people) {
 
 // 19. How many individuals live in cities starting with the letter "B"?
 
-const liveInCitiesWithChar = function (people, char) {
+const filterByCityInitial = function (people, char) {
   return people.filter(({ hometown }) => hometown[0] === char);
 };
 
-const countLiveInCitiesWithChar = function (people, char) {
-  return liveInCitiesWithChar(people, char).length;
+const countFilterByCityInitial = function (people, char) {
+  return filterByCityInitial(people, char).length;
 };
 
 // 20. Which individuals do not own any pets?
