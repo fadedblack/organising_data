@@ -439,8 +439,8 @@ const countFilterByCityInitial = function (people, char) {
 
 // 20. Which individuals do not own any pets?
 
-const doNotOwnPets = function (people) {
-  const persons = people.filter((person) => person.pets === undefined);
+const extractPetLessIndividuals = function (people) {
+  const persons = people.filter(({ pets }) => pets === undefined);
 
-  return persons.map((person) => person.name);
+  return persons.map(({ name }) => name);
 };
